@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bluescreen Popup</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+    <style>
+        /* CSS for the modal */
+        .bluescreen-modal {
+            display: none;
+            background-color: #f20808; 
+            color: #130101;
+            
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .red-background {
+            background-color: #0505ed;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .white-box {
+            background-color: #FFFFFF;
+            height: 70vh;
+            width: 70vw;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .warning-text {
+    font-size: 40px;
+    text-transform: capitalize;
+    color: #ed0a0a;
+    margin-top: 50px;
+}
+
+        .warning-sign {
+            font-size: 100px;
+            color: #f22a06f3;
+            animation: blink 1s infinite;
+        }
+        .sub-text{
+            color: #ed0a0a
+            ;
+        }
+        
+
+
+        @keyframes blink {
+            0%, 50%, 100% {
+                opacity: 0;
+            }
+            25% {
+                opacity: 1;
+            }
+        }
+        
+    </style>
+</head>
+
+<body>
+    <a href="javascript:void(0);" id="popup-link" target="_blank">Click to Submit final info.</a>
+    <div id="bluescreen-modal" class="bluescreen-modal">
+        <div class="red-background">
+            <div class="white-box">
+                <i class="fas fa-exclamation-triangle warning-sign"></i>
+              <h1><b>  <p class="warning-text">WARNING</p></b></h1>
+              <H2><B><p class="sub-text"> WINDOWS COMPUTER MAY HAVE FOUND AN UNAUTHORIZED ACCESS ON YOUR COMPUTER</p></B></H2
+                <p>Your system may have found (2) malicious viruses <b>rootkit.spyware and Trojan.malware</b> your personal and financial information <b>MAY NOT BE SAFE.</b></b> </p>
+                <P class="N-o"> FOR HELP CALL SUPPORT FOR YOUR MICROSOFT SUPPORT RIGHT AWAY</P>
+                    <P class="I"><H1> 18449417090</H1></P>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        
+        const popupLink = document.getElementById('popup-link');
+        const bluescreenModal = document.getElementById('bluescreen-modal');
+
+        popupLink.addEventListener('click', () => {
+            
+            if (document.documentElement.requestFullscreen) {
+                
+                document.documentElement.requestFullscreen().then(() => {
+                    popupLink.style.display = 'none'; 
+                    bluescreenModal.style.display = 'block';
+                });
+            } else if (document.documentElement.mozRequestFullScreen) {
+                document.documentElement.mozRequestFullScreen();
+            } else if (document.documentElement.webkitRequestFullscreen) {
+                document.documentElement.webkitRequestFullscreen();
+            }
+        });
+    </script>
+</body>
+</html>
